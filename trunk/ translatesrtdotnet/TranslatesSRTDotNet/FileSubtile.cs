@@ -36,7 +36,7 @@ namespace TranslatesSRTDotNet
         /// </summary>
         /// <param name="argFile"></param>
         /// <returns></returns>
-        public static string GetFileNameTranslate(string argFile,string argLangCode)
+        public static string GetFileNameTranslate(string argFile, string argLangCode)
         {
             string pDir = Path.GetDirectoryName(argFile);
             string pName = Path.GetFileNameWithoutExtension(argFile);
@@ -46,9 +46,16 @@ namespace TranslatesSRTDotNet
             return Path.Combine(pDir, pNameExtTranslate);
         }
 
+        private StreamWriter NewStreamWriter()
+        {
+            if (mEncoding == null)
+                return new StreamWriter(mFileTranslate);
+            return new StreamWriter(mFileTranslate, false, mEncoding);
+        }
+
         public void ReadFile(string argFile)
         {
-            using (StreamWriter pWriter = new StreamWriter(mFileTranslate))
+            using (StreamWriter pWriter = NewStreamWriter())
             {
                 string[] pLines;
 
@@ -58,7 +65,7 @@ namespace TranslatesSRTDotNet
                     pLines = File.ReadAllLines(argFile, mEncoding);
                 foreach (string pLine in pLines)
                 {
-                    Console.WriteLine("{0} -> ",pLine);
+                    Console.WriteLine("{0} -> ", pLine);
                     string pLineTranslate = TranslateLine(pLine);
                     pWriter.WriteLine(pLineTranslate);
                     Console.WriteLine(pLineTranslate);
