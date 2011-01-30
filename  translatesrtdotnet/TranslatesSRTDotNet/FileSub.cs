@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace TranslatesSRTDotNet
 {
@@ -18,7 +19,13 @@ namespace TranslatesSRTDotNet
         /// <returns></returns>
         protected override string TranslateLine(string argLine)
         {
-            throw new NotImplementedException();
+            Regex pRegEx = new Regex(@"({\d*}{\d*})(.*)");
+            Match pMatch = pRegEx.Match(argLine);
+            if (!pMatch.Success)
+                return argLine;
+            if (pMatch.Groups.Count != 3)
+                return argLine;
+            return string.Format("{0}{1}", pMatch.Groups[1].Value, Translate(pMatch.Groups[2].Value));
         }
     }
 }
