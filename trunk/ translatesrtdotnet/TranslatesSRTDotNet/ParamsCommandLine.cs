@@ -45,7 +45,7 @@ namespace TranslatesSRTDotNet
                     bool pNoArg = i + 1 == args.Length;
                     if (!pNoArg)
                         pParamStr = args[++i];
-                    switch (pOptionStr)
+                    switch (pOptionStr.ToLower())
                     {
                         case "-r":
                         case "--referrer":
@@ -85,10 +85,16 @@ namespace TranslatesSRTDotNet
                                 Encoding = Encoding.GetEncoding(pParamStr);
                             }
                             break;
+                        case "-h":
+                        case "--help":
+                            Help = true;
+                            break;
                         default:
                             throw new ParamException("Option {0} not known", pOptionStr);
                     }
                 }
+                else if (pOptionStr == "/?")
+                    Help = true;
                 else
                 {
                     if (string.IsNullOrEmpty(FileInput))
