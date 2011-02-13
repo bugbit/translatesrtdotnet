@@ -109,8 +109,6 @@ namespace TranslatesSRTDotNet
                 Console.WriteLine("Error: {0}", ex.Message);
             }
             Console.WriteLine();
-            Console.WriteLine("Press <ENTER> to terminate Test");
-            Console.ReadLine();
         }
     }
 }
