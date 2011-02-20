@@ -29,8 +29,8 @@ namespace TranslatesSRTDotNet
         {
             Console.WriteLine("TranslatesSRTDotNet [Options] <file input> [file output]");
             Console.WriteLine();
-            Console.WriteLine("file input\t\t\tfile for translate");
-            Console.WriteLine("file output\t\t\tfile output translate. Default <file input>-<lang>.sub");
+            Console.WriteLine("file input\t\t\tfile for translate .srt,.sub");
+            Console.WriteLine("file output\t\t\tfile output translate. Default <file input>-<lang>.sub|.srt");
             Console.WriteLine();
             Console.WriteLine("Options:");
             Console.WriteLine();

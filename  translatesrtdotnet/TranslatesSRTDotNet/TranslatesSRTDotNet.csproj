@@ -65,6 +65,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Blake%27s.7.S1E01.The.Way.Back.DVD.XviD.srt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Blake%27s.7.S1E01.The.Way.Back.DVD.XviD.sub">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

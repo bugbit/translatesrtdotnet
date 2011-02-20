@@ -37,13 +37,18 @@ namespace TranslatesSRTDotNet
             if (mMin.HasValue && mMax.HasValue)
             {
                 int pLng = mLongitud * mPosition / (mMax.Value - mMin.Value + 1);
-                int pLngSp = mLongitud - pLng;
+                int pLngSp = mLongitud - pLng - 1;
                 string pCars = string.Empty, pCarsSp = string.Empty;
                 if (pLng > 0)
                     pCars = new string(mCarProcess, pLng);
-                pCarsSp = new string(' ', pLngSp);
-                if ((int)mCarProcessing++ > 128)
-                    mCarProcessing = ' ';
+                if (pLngSp > 0)
+                {
+                    pCarsSp = new string(' ', pLngSp);
+                    if ((int)mCarProcessing++ > 128)
+                        mCarProcessing = ' ';
+                }
+                else
+                    mCarProcessing = mCarProcess;
                 Console.Write("\r{0} [{1}{2}{3}]", mName, pCars, mCarProcessing, pCarsSp);
             }
             else

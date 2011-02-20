@@ -30,6 +30,7 @@ namespace TranslatesSRTDotNet
         static FileSubtileFactory()
         {
             mFileSubtiles.Add(".sub", (r) => { return new FileSub(r); });
+            mFileSubtiles.Add(".srt", (r) => { return new FileSRT(r); });
         }
 
         static public FileSubtile GetFileSubtitle(string argExtension, string argReferrer)
